@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 
 class Resource extends Component {
   render() {
+    const { details } = this.props;
+
     return (
-      <p>Resource</p>
+      <li>{ details.title }</li>
     );
   }
 }

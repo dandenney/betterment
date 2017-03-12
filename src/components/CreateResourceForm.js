@@ -10,6 +10,7 @@ class CreateResourceForm extends Component {
       title: this.title.value
     }
 
+    this.props.addResource(resource);
     this.resourceForm.reset();
   }
 
@@ -21,6 +22,10 @@ class CreateResourceForm extends Component {
       </form>
     );
   }
+}
+
+CreateResourceForm.propTypes = {
+  addResource: React.PropTypes.func.isRequired
 }
 
 export default CreateResourceForm;

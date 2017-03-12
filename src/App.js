@@ -3,13 +3,16 @@ import React, { Component } from 'react';
 import './App.css';
 
 // App
-import CreateResourceForm from './components/CreateResourceForm';
 import Header from './components/Header';
 import Resource from './components/Resource';
+import Feed from './components/Feed';
 
 class App extends Component {
   constructor() {
     super();
+
+    // Bindings
+    this.addResource = this.addResource.bind(this);
 
     // Initial state
     this.state = {
@@ -34,8 +37,14 @@ class App extends Component {
       <div className="app">
         <Header />
         <main className="container">
-          <CreateResourceForm />
-          <Resource />
+          <Feed addResource={ this.addResource } />
+          <ul>
+            {
+              Object
+                .keys( this.state.resources )
+                .map( key => <Resource addToOrder={ this.addToOrder } index={ key } key={ key } details={ this.state.resources[ key ] } /> )
+            }
+          </ul>
         </main>
       </div>
     );
