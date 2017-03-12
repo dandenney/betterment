@@ -9,12 +9,11 @@ import Resource from './components/Resource';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Header />
-        <Resource />
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <main className="container">
+          <Resource />
+        </main>
       </div>
     );
   }
