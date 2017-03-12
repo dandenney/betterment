@@ -17,6 +17,17 @@ class App extends Component {
     };
   }
 
+  addResource(resource) {
+    // Update state
+    const resources = { ...this.state.resources };
+
+    // Add new to state
+    const timestamp = Date.now();
+    resources[`resource-${timestamp}`] = resource;
+
+    // Set state
+    this.setState({ resources });
+  }
 
   render() {
     return (
