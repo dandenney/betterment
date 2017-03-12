@@ -8,6 +8,16 @@ import Header from './components/Header';
 import Resource from './components/Resource';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    // Initial state
+    this.state = {
+      resources: {}
+    };
+  }
+
+
   render() {
     return (
       <div className="app">
