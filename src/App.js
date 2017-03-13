@@ -5,7 +5,7 @@ import './App.css';
 // App
 import Header from './components/Header';
 import Resource from './components/Resource';
-import Feed from './components/Feed';
+import CreateResourceForm from './components/CreateResourceForm';
 
 class App extends Component {
   constructor() {
@@ -37,7 +37,7 @@ class App extends Component {
       <div className="app">
         <Header />
         <main className="container">
-          <Feed addResource={ this.addResource } />
+          <CreateResourceForm addResource={ this.addResource } />
           <ul>
             {
               Object
