@@ -6,7 +6,11 @@ class Resource extends Component {
     const { details } = this.props;
 
     return (
-      <li>{ details.title }</li>
+      <article>
+        <h3>{ details.title }</h3>
+        <p>{ details.description }</p>
+        <o><a href={ details.url }>Link</a></o>
+      </article>
     );
   }
 }

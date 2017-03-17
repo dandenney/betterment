@@ -38,13 +38,13 @@ class App extends Component {
         <Header />
         <main className="container">
           <CreateResourceForm addResource={ this.addResource } />
-          <ul>
+          <section>
             {
               Object
                 .keys( this.state.resources )
                 .map( key => <Resource addToOrder={ this.addToOrder } index={ key } key={ key } details={ this.state.resources[ key ] } /> )
             }
-          </ul>
+          </section>
         </main>
       </div>
     );

@@ -7,7 +7,9 @@ class CreateResourceForm extends Component {
     e.preventDefault();
 
     const resource = {
-      title: this.title.value
+      description: this.description.value,
+      title: this.title.value,
+      url: this.url.value
     }
 
     this.props.addResource(resource);
@@ -17,7 +19,18 @@ class CreateResourceForm extends Component {
   render() {
     return (
       <form className="resource-edit" onSubmit={ this.createResource.bind(this) } ref={ (input) => this.resourceForm = input }>
-        <input ref={ (input) => this.title = input } placeholder="Resource Name" type="text" />
+        <fieldset>
+          <label htmlFor="resource-title">Title</label>
+          <input id="resource-title" ref={ (input) => this.title = input } placeholder="Resource Title" type="text" />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="resource-url">URL</label>
+          <input id="resource-url" ref={ (input) => this.url = input } placeholder="Resource URL" type="text" />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="resource-description">Description</label>
+          <textarea id="resource-description" ref={ (input) => this.description = input } placeholder="Resource Description" />
+        </fieldset>
         <button type="submit">Add Resource</button>
       </form>
     );
