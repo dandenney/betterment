@@ -1,11 +1,12 @@
 // Global
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 // App
+import base from './components/base';
+import CreateResourceForm from './components/CreateResourceForm';
 import Header from './components/Header';
 import Resource from './components/Resource';
-import CreateResourceForm from './components/CreateResourceForm';
 
 class App extends Component {
   constructor() {
@@ -16,20 +17,27 @@ class App extends Component {
 
     // Initial state
     this.state = {
-      resources: {}
+      resources: {},
     };
   }
 
   addResource(resource) {
     // Update state
-    const resources = { ...this.state.resources };
+    const resources = {...this.state.resources};
 
     // Add new to state
     const timestamp = Date.now();
     resources[`resource-${timestamp}`] = resource;
 
     // Set state
-    this.setState({ resources });
+    this.setState({resources});
+  }
+
+  componentWillMount() {
+    this.ref = base.syncState('/resources', {
+      context: this,
+      state: 'resources',
+    });
   }
 
   render() {
@@ -37,13 +45,16 @@ class App extends Component {
       <div className="app">
         <Header />
         <main className="container">
-          <CreateResourceForm addResource={ this.addResource } />
+          <CreateResourceForm addResource={this.addResource} />
           <section>
-            {
-              Object
-                .keys( this.state.resources )
-                .map( key => <Resource addToOrder={ this.addToOrder } index={ key } key={ key } details={ this.state.resources[ key ] } /> )
-            }
+            {Object.keys(this.state.resources).map(key => (
+              <Resource
+                addToOrder={this.addToOrder}
+                index={key}
+                key={key}
+                details={this.state.resources[key]}
+              />
+            ))}
           </section>
         </main>
       </div>
