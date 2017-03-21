@@ -45,8 +45,8 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        <Auth />
         <main className="container">
+          <Auth />
           <CreateResourceForm addResource={this.addResource} />
           <section>
             {Object.keys(this.state.resources).map(key => (
