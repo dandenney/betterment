@@ -4,6 +4,7 @@ import './App.css';
 
 // App
 import base from './components/base';
+import Auth from './components/Auth';
 import CreateResourceForm from './components/CreateResourceForm';
 import Header from './components/Header';
 import Resource from './components/Resource';
@@ -44,6 +45,7 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
+        <Auth />
         <main className="container">
           <CreateResourceForm addResource={this.addResource} />
           <section>
