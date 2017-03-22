@@ -31,6 +31,14 @@ class CreateResourceForm extends Component {
       console.error(err);
       return;
     }
+
+    const resourcesRef = base.database().ref();
+
+    resourcesRef.once('value', snapshot => {
+      this.setState({
+        uid: authData.user.uid,
+      });
+    });
   }
 
   renderLogin() {
