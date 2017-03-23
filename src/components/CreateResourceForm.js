@@ -68,6 +68,7 @@ class CreateResourceForm extends Component {
       description: this.description.value,
       title: this.title.value,
       url: this.url.value,
+      uid: this.state.uid,
     };
 
     this.props.addResource(resource);
