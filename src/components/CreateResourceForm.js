@@ -37,6 +37,8 @@ class CreateResourceForm extends Component {
     resourcesRef.once('value', snapshot => {
       this.setState({
         uid: authData.user.uid,
+        name: authData.user.displayName,
+        avatar: authData.user.photoURL,
       });
     });
   }
@@ -69,6 +71,8 @@ class CreateResourceForm extends Component {
       title: this.title.value,
       url: this.url.value,
       uid: this.state.uid,
+      name: this.state.name,
+      avatar: this.state.avatar,
     };
 
     this.props.addResource(resource);
