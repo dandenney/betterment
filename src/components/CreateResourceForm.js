@@ -16,6 +16,7 @@ class CreateResourceForm extends Component {
     // Initial state
     this.state = {
       uid: null,
+      applied: false,
     };
   }
 

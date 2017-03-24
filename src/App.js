@@ -49,7 +49,6 @@ class App extends Component {
           <section>
             {Object.keys(this.state.resources).map(key => (
               <Resource
-                addToOrder={this.addToOrder}
                 index={key}
                 key={key}
                 details={this.state.resources[key]}
