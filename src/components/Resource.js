@@ -10,7 +10,7 @@ class Resource extends Component {
     const {details} = this.props;
 
     return (
-      <article boom={this.props.boom}>
+      <article>
         <h3>{details.title}</h3>
         <p>{details.description}</p>
         <p><a href={details.url}>Link</a></p>
