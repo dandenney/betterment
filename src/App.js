@@ -14,11 +14,59 @@ class App extends Component {
 
     // Bindings
     this.addResource = this.addResource.bind(this);
+    this.authenticate = this.authenticate.bind(this);
+    this.authHandler = this.authHandler.bind(this);
+    this.renderLogin = this.renderLogin.bind(this);
 
     // Initial state
     this.state = {
+      uid: null,
       resources: {},
     };
+  }
+
+  authenticate(provider) {
+    console.log(`Trying to log in with ${provider}`);
+    base.authWithOAuthPopup(provider, this.authHandler);
+  }
+
+  authHandler(err, authData) {
+    console.log(authData);
+
+    if (err) {
+      console.error(err);
+      return;
+    }
+
+    const resourcesRef = base.database().ref();
+
+    resourcesRef.once('value', snapshot => {
+      this.setState({
+        uid: authData.user.uid,
+        name: authData.user.displayName,
+        avatar: authData.user.photoURL,
+      });
+    });
+  }
+
+  renderLogin() {
+    return (
+      <section>
+        <h2>Auth</h2>
+        <button
+          className="auth-github"
+          onClick={() => this.authenticate('github')}
+        >
+          Log In with GitHub
+        </button>
+        <button
+          className="auth-twitter"
+          onClick={() => this.authenticate('twitter')}
+        >
+          Log In with Twitter
+        </button>
+      </section>
+    );
   }
 
   addResource(resource) {
@@ -41,14 +89,37 @@ class App extends Component {
   }
 
   render() {
+    if (!this.state.uid) {
+      return (
+        <div className="app">
+          <Header />
+          <main className="container">
+            // Yooooooooo
+            // You have a UID everywhere, flip something in Applied
+            {this.renderLogin()}
+            <section>
+              {Object.keys(this.state.resources).map(key => (
+                <Resource
+                  uid={this.state.uid}
+                  index={key}
+                  key={key}
+                  details={this.state.resources[key]}
+                />
+              ))}
+            </section>
+          </main>
+        </div>
+      );
+    }
+
     return (
       <div className="app">
         <Header />
-        <main className="container">
-          <CreateResourceForm addResource={this.addResource} />
-          <section>
+        <main className="container" uid={this.state.uid}>
+          <section uid={this.state.uid}>
             {Object.keys(this.state.resources).map(key => (
               <Resource
+                uid={this.state.uid}
                 index={key}
                 key={key}
                 details={this.state.resources[key]}
