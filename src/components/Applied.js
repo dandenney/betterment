@@ -2,8 +2,25 @@
 import React, {Component} from 'react';
 
 class Applied extends Component {
-  render() {
+  renderForm() {
+    return <p>Applied Form</p>;
+  }
+
+  renderApplied() {
     return <p>Applied: </p>;
+  }
+
+  render() {
+    if (this.props.uid === this.props.ownerUID) {
+      return (
+        <section>
+          {this.renderForm()}
+          {this.renderApplied()}
+        </section>
+      );
+    }
+
+    return <p>Applied: {this.props.uid}</p>;
   }
 }
 

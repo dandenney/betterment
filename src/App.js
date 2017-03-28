@@ -115,8 +115,8 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        <main className="container" uid={this.state.uid}>
-          <section uid={this.state.uid}>
+        <main className="container">
+          <section>
             {Object.keys(this.state.resources).map(key => (
               <Resource
                 uid={this.state.uid}
