@@ -4,12 +4,6 @@ import React, {Component} from 'react';
 class CreateResourceForm extends Component {
   constructor() {
     super();
-
-    // Initial state
-    this.state = {
-      uid: null,
-      applied: false,
-    };
   }
 
   createResource(e) {
@@ -19,9 +13,9 @@ class CreateResourceForm extends Component {
       description: this.description.value,
       title: this.title.value,
       url: this.url.value,
-      uid: this.state.uid,
-      name: this.state.name,
-      avatar: this.state.avatar,
+      uid: this.props.uid,
+      name: this.props.name,
+      avatar: this.props.avatar,
     };
 
     this.props.addResource(resource);

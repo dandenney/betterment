@@ -97,7 +97,12 @@ class App extends Component {
             {this.renderLogin()}
 
             <section>
-              <CreateResourceForm uid={this.state.uid} />
+              <CreateResourceForm
+                addResource={this.addResource}
+                avatar={this.state.avatar}
+                name={this.state.name}
+                uid={this.state.uid}
+              />
               {Object.keys(this.state.resources).map(key => (
                 <Resource
                   uid={this.state.uid}
@@ -119,6 +124,8 @@ class App extends Component {
           <section>
             <CreateResourceForm
               addResource={this.addResource}
+              avatar={this.state.avatar}
+              name={this.state.name}
               uid={this.state.uid}
             />
             {Object.keys(this.state.resources).map(key => (
