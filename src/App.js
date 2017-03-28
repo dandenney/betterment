@@ -94,9 +94,8 @@ class App extends Component {
         <div className="app">
           <Header />
           <main className="container">
-            // Yooooooooo
-            // You have a UID everywhere, flip something in Applied
             {this.renderLogin()}
+
             <section>
               {Object.keys(this.state.resources).map(key => (
                 <Resource
