@@ -3,11 +3,11 @@ import React, {Component} from 'react';
 
 class Applied extends Component {
   renderForm() {
-    return <p>Applied Form</p>;
+    return <p>Applied Form {this.props.resourceId}</p>;
   }
 
   renderApplied() {
-    return <p>Applied: </p>;
+    return <p>Applied:</p>;
   }
 
   render() {
