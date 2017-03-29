@@ -4,9 +4,6 @@ import React, {Component} from 'react';
 class CreateApplied extends Component {
   constructor() {
     super();
-
-    // Bindings
-    this.renderForm = this.renderForm.bind(this);
   }
 
   renderForm() {
@@ -14,10 +11,15 @@ class CreateApplied extends Component {
   }
 
   render() {
-    const {details} = this.props;
-    console.log(details);
+    if (this.props.uid === this.props.ownerUID) {
+      return (
+        <section>
+          {this.renderForm()}
+        </section>
+      );
+    }
 
-    return this.renderForm();
+    return null;
   }
 }
 
