@@ -6,6 +6,7 @@ import './App.css';
 import base from './components/base';
 import CreateResourceForm from './components/CreateResourceForm';
 import Header from './components/Header';
+import Admin from './components/Admin';
 import Resource from './components/Resource';
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
     this.authenticate = this.authenticate.bind(this);
     this.authHandler = this.authHandler.bind(this);
     this.renderLogin = this.renderLogin.bind(this);
+    this.updateResource = this.updateResource.bind(this);
 
     // Initial state
     this.state = {
@@ -75,9 +77,15 @@ class App extends Component {
 
     // Add new to state
     const timestamp = Date.now();
-    resources[`resource-${timestamp}`] = resource;
+    resources[`${timestamp}`] = resource;
 
     // Set state
+    this.setState({resources});
+  }
+
+  updateResource(key, updatedResource) {
+    const resources = {...this.state.resources};
+    resources[key] = updatedResource;
     this.setState({resources});
   }
 
@@ -127,6 +135,11 @@ class App extends Component {
               avatar={this.state.avatar}
               name={this.state.name}
               uid={this.state.uid}
+            />
+            <Admin
+              addResource={this.addResource}
+              resources={this.state.resources}
+              updateResource={this.updateResource}
             />
             {Object.keys(this.state.resources).map(key => (
               <Resource

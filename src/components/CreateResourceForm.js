@@ -26,7 +26,7 @@ class CreateResourceForm extends Component {
     if (this.props.uid) {
       return (
         <form
-          className="resource-edit"
+          className="resource-create"
           onSubmit={this.createResource.bind(this)}
           ref={input => this.resourceForm = input}
         >
