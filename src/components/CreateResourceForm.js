@@ -16,6 +16,14 @@ class CreateResourceForm extends Component {
       uid: this.props.uid,
       name: this.props.name,
       avatar: this.props.avatar,
+      applied: {
+        uid: this.props.uid,
+        name: this.props.name,
+        avatar: this.props.avatar,
+        title: '',
+        url: '',
+        description: '',
+      },
     };
 
     this.props.addResource(resource);
