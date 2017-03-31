@@ -10,20 +10,15 @@ class CreateResourceForm extends Component {
     e.preventDefault();
 
     const resource = {
-      description: this.description.value,
-      title: this.title.value,
-      url: this.url.value,
       uid: this.props.uid,
       name: this.props.name,
       avatar: this.props.avatar,
-      applied: {
-        uid: this.props.uid,
-        name: this.props.name,
-        avatar: this.props.avatar,
-        title: '',
-        url: '',
-        description: '',
-      },
+      title: this.title.value,
+      url: this.url.value,
+      description: this.description.value,
+      appliedTitle: '',
+      appliedUrl: '',
+      appliedDescription: '',
     };
 
     this.props.addResource(resource);

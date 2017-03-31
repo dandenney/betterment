@@ -49,6 +49,38 @@ class Admin extends React.Component {
             onChange={e => this.handleChange(e, key)}
           />
         </fieldset>
+
+        <h3>Applied</h3>
+        <fieldset>
+          <label htmlFor="applied-title">Title</label>
+          <input
+            type="text"
+            name="appliedTitle"
+            value={resource.appliedTitle}
+            placeholder="Applied Title"
+            onChange={e => this.handleChange(e, key)}
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="applied-url">Url</label>
+          <input
+            type="text"
+            name="appliedUrl"
+            value={resource.appliedUrl}
+            placeholder="Applied URL"
+            onChange={e => this.handleChange(e, key)}
+          />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="applied-description">Description</label>
+          <input
+            type="text"
+            name="appliedDescription"
+            value={resource.appliedDescription}
+            placeholder="Applied Description"
+            onChange={e => this.handleChange(e, key)}
+          />
+        </fieldset>
       </div>
     );
   }

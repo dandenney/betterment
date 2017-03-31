@@ -16,6 +16,10 @@ class Resource extends Component {
         <p><a href={details.url}>Link</a></p>
         <p>{details.name}</p>
         <p><img alt={details.name} src={details.avatar} width="24" /></p>
+        <h4>Applied</h4>
+        <p>{details.appliedTitle}</p>
+        <p><a href={details.appliedUrl}>Link</a></p>
+        <p>{details.appliedDescription}</p>
         <CreateApplied
           uid={this.props.uid}
           ownerUID={this.props.details.uid}
